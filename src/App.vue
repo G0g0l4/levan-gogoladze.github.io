@@ -2,6 +2,7 @@
   <Header/>
   <main class="container">
     <SocialLinks/>
+    <Introduction/>
   </main>
   <Footer/>
 </template>
@@ -10,11 +11,12 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SocialLinks from "@/components/SocialLinks";
+import Introduction from "@/components/Introduction";
 
 export default {
   name: 'App',
   components: {
-    Header, Footer, SocialLinks
+    Header, Footer, SocialLinks, Introduction
   }
 }
 </script>
