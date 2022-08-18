@@ -1,25 +1,25 @@
 <template>
-  <div class="links-container" :class="{active: active}" v-on:click="toggle">
+  <div class="links-container" :class="{active: active}" @click="toggle">
     <div class="links-container__toggle">
-      <font-awesome-icon icon="fa-solid fa-globe" class="fa-2xl"/>
+      <font-awesome-icon icon="fa-solid fa-globe" class="fa-xl"/>
     </div>
 
-    <div class="links-container__link" style="--iterator:0;">
+    <div class="links-container__link" style="--iterator:1;">
       <a href="" target="_blank" rel="noopener">
         <font-awesome-icon icon="fa-brands fa-github" class="fa-xl"/>
       </a>
     </div>
-    <div class="links-container__link" style="--iterator:1;">
+    <div class="links-container__link" style="--iterator:2;">
       <a href="" target="_blank" rel="noopener">
         <font-awesome-icon icon="fa-brands fa-linkedin" class="fa-xl"/>
       </a>
     </div>
-    <div class="links-container__link" style="--iterator:2;">
+    <div class="links-container__link" style="--iterator:3;">
       <a href="" target="_blank" rel="noopener">
         <font-awesome-icon icon="fa-brands fa-instagram" class="fa-xl	"/>
       </a>
     </div>
-    <div class="links-container__link" style="--iterator:3;">
+    <div class="links-container__link" style="--iterator:4;">
       <a href="" target="_blank" rel="noopener">
         <font-awesome-icon icon="fa-brands fa-facebook" class="fa-xl"/>
       </a>
@@ -45,59 +45,47 @@ export default {
 <style scoped lang="scss">
 .links-container {
   position: fixed;
-  width: 200px;
-  height: 200px;
-  right: 0;
-  top: 50%;
-  cursor: pointer;
-  border-radius: 25% 0 0 25%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: 1.25s;
+  right: 20px;
+  top: 50%;
+  cursor: pointer;
+  transform: rotate(-60deg);
 
   .links-container__toggle {
-    position: absolute;
+    z-index: 999;
+    transform: rotate(60deg);
+    box-shadow: 0 0 20px rgb(0, 0, 0, 0.2);
+  }
+
+  .links-container__toggle,
+  .links-container__link a {
     width: 60px;
     height: 60px;
-    background: blue;
     display: flex;
-    justify-content: center;
     align-items: center;
-    z-index: 999;
+    justify-content: center;
+    background: blue;
     border-radius: 50%;
+    color: #ffffff;
   }
 
   .links-container__link {
-    transition: .5s;
-    transition-delay: calc(0.1s * var(--iterator));
     position: absolute;
-    left: 0;
-    transform: rotate(0deg) translateX(100px);
-    transform-origin: 100px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #FFFFFF;
+    transition: all 0.6s ease;
 
     a {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      transform: rotate(calc(360deg / -8 * var(--iterator))) translateY(120px);
+      transform: rotate(60deg);
 
-      span {
-        transform: rotate(calc(var(--iterator) * (360deg / 8)));
+      svg {
+        transform: rotate(calc((360deg / -6) * (var(--iterator))));
       }
     }
   }
 
   &.active .links-container__link {
-    //transform: rotate(calc(360deg / 4 * var(--iterator)));
-    transform: rotate(calc(360deg / 8 * var(--iterator))) translateY(120px);
+    transform: rotate(calc((360deg / 6) * (var(--iterator)))) translateY(110px);
   }
 }
 </style>
